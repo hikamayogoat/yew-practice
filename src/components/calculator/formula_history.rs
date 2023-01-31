@@ -28,6 +28,7 @@ pub fn formula_list() -> Html {
 
   html! {
     <ul class="list-group">
+      <h3>{"計算履歴"}</h3>
       {calc_histories.iter().map(|history| html! {
         <Formula left={history.left} right={history.right} answer={history.answer} />
       }).collect::<Html>()}

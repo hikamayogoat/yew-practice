@@ -2,7 +2,8 @@ mod components;
 
 use yew::prelude::*;
 use components::header::Header;
-use components::calculator::formula_list::FormulaList;
+use components::calculator::formula_history::FormulaList;
+use components::calculator::formula_form::FormulaForm;
 
 #[function_component(App)]
 fn app() -> Html {
@@ -10,6 +11,7 @@ fn app() -> Html {
         <>
             <Header />
             <main class="container-fluid mt-2">
+                <FormulaForm />
                 <FormulaList />
             </main>
         </>
