@@ -1,35 +1,18 @@
-use yew::{function_component, html, Html};
+use yew::{function_component, html, Html, Properties};
 use crate::components::calculator::formula::Formula;
 use crate::components::calculator::types::CalcHistory;
 
+#[derive(Properties, PartialEq)]
+pub struct FormulaHistoryProps {
+  pub calc_histories: Vec<CalcHistory>,
+}
+
 #[function_component(FormulaList)]
-pub fn formula_list() -> Html {
-  let calc_histories = vec![
-    CalcHistory {
-      id: 1,
-      left: 1,
-      right: 2,
-      answer: 3,
-    },
-    CalcHistory {
-      id: 2,
-      left: 4,
-      right: 5,
-      answer: 9,
-    },
-    CalcHistory {
-      id: 3,
-      left: 6,
-      right: 7,
-      answer: 13,
-    },
-
-  ];
-
+pub fn formula_list(props: &FormulaHistoryProps) -> Html {
   html! {
     <ul class="list-group">
       <h3>{"計算履歴"}</h3>
-      {calc_histories.iter().map(|history| html! {
+      {props.calc_histories.iter().map(|history| html! {
         <Formula left={history.left} right={history.right} answer={history.answer} />
       }).collect::<Html>()}
     </ul>
