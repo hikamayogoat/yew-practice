@@ -14,8 +14,10 @@ pub struct FormulaFormProps {
 
 
 // Callback関数を返す関数
-// TODO: 参照で受け取った form_number の clone を書き換えて、なぜもとの state が書き換わるか不明
 fn oninput_base(form_number: &UseStateHandle<usize>) -> Callback<InputEvent> {
+  // UseStateHandle.inner くんが Rc？になっているので内部可変性があるっぽく,
+  // 借りてきた form_number を clone しても中身は同じところを見ているようす。
+  // なので大元の state を書き換えることができる
   let number = form_number.clone();
 
   Callback::from(move |e: InputEvent| { // move をつけることで number の所有権を奪って state を書き換える
