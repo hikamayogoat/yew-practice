@@ -1,11 +1,18 @@
+mod components;
+
 use yew::prelude::*;
+use components::header::Header;
+use components::calculator::formula_list::FormulaList;
 
 #[function_component(App)]
 fn app() -> Html {
-    // この中では1つのルート要素しか許されていない
-    // only one root html element is allowed (hint: you can wrap multiple html elements in a fragment `<></>`)
     html! {
-        <h1>{ "Hello World" }</h1>
+        <>
+            <Header />
+            <main class="container-fluid mt-2">
+                <FormulaList />
+            </main>
+        </>
     }
 }
 
